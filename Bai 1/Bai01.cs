@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bai_1
+namespace Bai01
 {
-    public partial class FormBai1 : Form
+    public partial class FormBai01 : Form
     {
-        public FormBai1()
+        public FormBai01()
         {
             InitializeComponent();
         }
