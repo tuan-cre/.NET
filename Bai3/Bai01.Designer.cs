@@ -1,6 +1,6 @@
 ﻿namespace Bai01
 {
-    partial class FormBai01
+    partial class Bai01
     {
         /// <summary>
         /// Required designer variable.
@@ -166,7 +166,7 @@
             this.btnTim.UseVisualStyleBackColor = true;
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
-            // FormBai01
+            // Bai01
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -177,7 +177,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormBai01";
+            this.Name = "Bai01";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chuong trinh tim so lon nhat, so nho nhat trong 3 so";
             this.groupBox1.ResumeLayout(false);

@@ -4,16 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bai01
+namespace Bai3._1
 {
-    public partial class FormBai01 : Form
+    public partial class Bai1 : Form
     {
-        public FormBai01()
+        public Bai1()
         {
             InitializeComponent();
         }
@@ -77,12 +76,6 @@ namespace Bai01
                     txtSoNhoNhat.Text = a.ToString();
                 }
             }
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
