@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bai5._1
+namespace Bai5._2
 {
     public partial class Form1 : Form
     {
@@ -16,12 +16,17 @@ namespace Bai5._1
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void txtN_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 int n;
-
                 try
                 {
                     n = int.Parse(txtN.Text);
@@ -33,53 +38,30 @@ namespace Bai5._1
                     txtN.Focus();
                     return;
                 }
-
-                if (n < 2)
-                {
-                    txtSNT.Text = n.ToString() + " khong phai so nguyen to";
-                    return;
-                }
-
-                txtSNTN.Text = "";
-                if (n > 2)
-                    txtSNTN.Text += "2 ";
-
-                for (int i = 2; i < n; i++)
-                {
-                    for (int j = 2; j < i; j++)
-                    {
-                        if (i % j == 0)
-                        {
-                            break;
-                        }
-                        if (j == i - 1)
-                        {
-                            txtSNTN.Text += i.ToString() + " ";
-                        }
-                    }
-                }
-
-                for (int i = 2; i < n; i++)
+                //Kiem Tra so hoan hao
+                int sum = 0;
+                for (int i = 1; i < n; i++)
                 {
                     if (n % i == 0)
                     {
-                        txtSNT.Text = n.ToString() + " khong phai so nguyen to";
-                        return;
+                        sum += i;
                     }
                 }
-
-                txtSNT.Text = n.ToString() + " la so nguyen to";
-                return;
+                if (sum == n)
+                {
+                    txtSHH.Text = n.ToString() + " la so hoan hao";
+                }
+                else
+                {
+                    txtSHH.Text = n.ToString() + " khong phai so hoan hao";
+                }
             }
         }
-
         private void btnReset_Click(object sender, EventArgs e)
         {
-            txtSNTN.Text = "";
-            txtSNT.Text = "";
             txtN.Text = "";
+            txtSHH.Text = "";
         }
-
         private void btnQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();
