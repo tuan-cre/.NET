@@ -108,55 +108,23 @@ namespace Bai10
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        connection.Open();
-            //        string query = "INSERT INTO nhanvien (manv, holot, tennv, phai, ngaysinh, macv) VALUES (@manv, @holot, @tennv, @gioitinh, @ngaysinh, @malop)";
-            //        using (SqlCommand command = new SqlCommand(query, connection))
-            //        {
-            //            command.Parameters.AddWithValue("@MaSV", MaSV.Text);
-            //            command.Parameters.AddWithValue("@HoSV", HoSV.Text);
-            //            command.Parameters.AddWithValue("@TenSV", TenSV.Text);
-            //            command.Parameters.AddWithValue("@GioiTinh", rdNam.Checked);
-            //            command.Parameters.AddWithValue("@NgaySinh", dtNgaySinh.Value);
-            //            command.Parameters.AddWithValue("@MaLop", MaLop.Text);
-            //            command.Parameters.AddWithValue("@MaKhoa", MaKhoa.Text);
-
-            //            command.ExecuteNonQuery();
-            //        }
-            //        LoadSinhVienData();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("An error occurred: " + ex.Message);
-            //    }
-            //}
-            // Kiểm tra dữ liệu hợp lệ(SV tự viết): 
-            // - các trường không bỏ trống 
-            // - manv không trùng 
- 
-            // Thêm 1 dòng vào bảng tblNhanVien 
             DataRow row = ds.Tables["tblDSNhanVien"].NewRow();
             row["manv"] = txtMaNV.Text;
             row["holot"] = txtHoLot.Text;
             row["tennv"] = txtTen.Text;
-            if (radNu.Checked == true)
-            {
-                row["phai"] = "Nữ";
-            }
-            else
-            {
-                row["phai"] = "Nam";
-            }
+            row["phai"] = radNu.Checked ? "Nữ" : "Nam";
             row["ngaysinh"] = dtpNgaySinh.Text;
             row["macv"] = cboChucVu.SelectedValue;
-            ds.Tables["tblDSNhanVien"].Rows.Add(row);
-            // Hiển thị tên chức vụ tương ứng (SV tự viết) 
 
-            // Lưu dữ liệu vào CSDL
+            DataRow[] selectedChucVu = ds.Tables["tblChucVu"].Select("macv = '" + cboChucVu.SelectedValue + "'");
+            if (selectedChucVu.Length > 0)
+            {
+                row["tencv"] = selectedChucVu[0]["tencv"]; 
+            }
+
+            ds.Tables["tblDSNhanVien"].Rows.Add(row);
         }
+
 
         private void dgDSNhanVien_Click(object sender, EventArgs e)
         {
@@ -181,14 +149,20 @@ namespace Bai10
             if (dgDSNhanVien.SelectedRows.Count > 0)
             {
                 DataGridViewRow dr = dgDSNhanVien.SelectedRows[0];
-                dr.Cells["manv"].Value = txtMaNV.Text;
-                dr.Cells["holot"].Value = txtHoLot.Text;
-                dr.Cells["tennv"].Value = txtTen.Text;
-                dr.Cells["phai"].Value = radNam.Checked ? "Nam" : "Nữ";
-                dr.Cells["ngaysinh"].Value = dtpNgaySinh.Text;
-                dr.Cells["macv"].Value = cboChucVu.SelectedValue;
+                DataRow[] rows = ds.Tables["tblDSNhanVien"].Select("manv = '" + dr.Cells["manv"].Value.ToString() + "'");
+
+                if (rows.Length > 0)
+                {
+                    DataRow row = rows[0];
+                    row["holot"] = txtHoLot.Text;
+                    row["tennv"] = txtTen.Text;
+                    row["phai"] = radNam.Checked ? "Nam" : "Nữ";
+                    row["ngaysinh"] = dtpNgaySinh.Value;
+                    row["macv"] = cboChucVu.SelectedValue;
+                }
             }
         }
+
 
         private void btnHuy_Click(object sender, EventArgs e)
         {

@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E0FFFE7D-2452-482C-9466-6D50657C90B1}</ProjectGuid>
+    <ProjectGuid>{80A0C50D-A8C1-4E86-9F80-13B224D6FB51}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Bai8._1</RootNamespace>
-    <AssemblyName>Bai8.1</AssemblyName>
+    <RootNamespace>Bai7._3</RootNamespace>
+    <AssemblyName>Bai7.3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
